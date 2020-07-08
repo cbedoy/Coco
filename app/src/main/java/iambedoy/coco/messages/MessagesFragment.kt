@@ -1,5 +1,6 @@
 package iambedoy.coco.messages
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import coil.api.load
 import coil.transform.CircleCropTransformation
+import iambedoy.coco.ChatActivity
 import iambedoy.coco.R
 import iambedoy.coco.common.CommonTitleItem
 import kotlinx.android.synthetic.main.fragment_common.*
@@ -49,6 +51,13 @@ class MessagesFragment : Fragment(){
                             chat_message_avatar.load(data.user.picture.large){
                                 crossfade(true)
                                 transformations(CircleCropTransformation())
+                            }
+                            chat_message_view.setOnClickListener {
+                                startActivity(
+                                    Intent(context, ChatActivity::class.java).apply {
+
+                                    }
+                                )
                             }
                         }
                     }

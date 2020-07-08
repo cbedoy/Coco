@@ -3,4 +3,6 @@
     <string name="messages">Messages</string>
     <string name="explorer">Explorer</string>
     <string name="settings">Settings</string>
+    <string name="lorem">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.</string>
+
 </resources>

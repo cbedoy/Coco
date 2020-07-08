@@ -4,6 +4,7 @@ import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import iambedoy.coco.chat.ChatFragment
 import iambedoy.coco.explorer.ExplorerFragment
 import iambedoy.coco.messages.MessagesFragment
 import iambedoy.coco.messages.MessagesRepository
@@ -46,6 +47,9 @@ val fragment = module {
     }
     factory {
         SettingsFragment()
+    }
+    factory {
+        ChatFragment()
     }
 }
 

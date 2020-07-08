@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="bottom"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/chat_recycler_view"
+        android:paddingBottom="@dimen/tiny_size"
+        tools:listitem="@layout/view_holder_in_plain_message"
+        android:layout_height="0dp" />
+
+    <View
+        android:background="@color/backgroundColor"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <iambedoy.coco.chat.components.ChatInputView
+        android:id="@+id/chat_input_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

@@ -5,6 +5,9 @@
     <dimen name="common_size">16dp</dimen>
     <dimen name="small_size">8dp</dimen>
     <dimen name="tiny_size">8dp</dimen>
+
+    <dimen name="chat_icon_size">24dp</dimen>
+
     <dimen name="chat_message_size">80dp</dimen>
 
     <dimen name="common_text_size">17sp</dimen>

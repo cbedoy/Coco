@@ -36,12 +36,4 @@ class MainActivity : AppCompatActivity() {
 
         showFragment(messagesFragment)
     }
-
-    private fun showFragment(targetFragment: Fragment){
-        if (!supportFragmentManager.fragments.contains(targetFragment)){
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, targetFragment)
-                .commit()
-        }
-    }
 }

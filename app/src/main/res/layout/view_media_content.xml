@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_marginTop="@dimen/tiny_size"
+        android:id="@+id/view_media_content_thumbnail"
+        android:adjustViewBounds="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:lineSpacingMultiplier="1"
+        android:layout_marginStart="@dimen/small_size"
+        android:layout_marginEnd="@dimen/small_size"
+        android:layout_marginTop="@dimen/small_size"
+        android:textColor="@android:color/black"
+        android:id="@+id/view_media_content_title"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/common_text_size"
+        tools:text="@string/lorem" />
+
+    <TextView
+        android:lineSpacingMultiplier="0.8"
+        android:layout_marginStart="@dimen/small_size"
+        android:layout_marginEnd="@dimen/small_size"
+        android:layout_marginTop="@dimen/small_size"
+        android:textColor="@android:color/black"
+        android:id="@+id/view_media_content_description"
+        android:fontFamily="@font/roboto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/small_text_size"
+        tools:text="@string/lorem" />
+
+    <TextView
+        android:layout_marginStart="@dimen/small_size"
+        android:layout_marginEnd="@dimen/small_size"
+        android:layout_marginTop="@dimen/small_size"
+        android:textColor="@android:color/black"
+        android:id="@+id/view_media_content_service"
+        android:fontFamily="@font/roboto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:textSize="@dimen/small_text_size"
+        tools:text="@string/lorem" />
+</LinearLayout>

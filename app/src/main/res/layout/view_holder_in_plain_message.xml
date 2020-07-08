@@ -7,22 +7,36 @@
     android:orientation="vertical"
     android:layout_height="wrap_content">
 
-    <TextView
+    <LinearLayout
         android:layout_marginTop="@dimen/common_size"
         android:layout_marginStart="@dimen/common_size"
         android:layout_marginEnd="@dimen/large_size"
-        android:id="@+id/in_plain_message_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/common_text_size"
-        android:fontFamily="@font/roboto"
-        android:lineSpacingMultiplier="1.2"
+        android:orientation="vertical"
         android:background="@drawable/in_plain_message_drawable"
-        tools:text="I'm looking through you while you're looking through your phone, and then leaving with somebody else"
-        android:textColor="@color/blackPrimary" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/plain_message_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_text_size"
+            android:fontFamily="@font/roboto"
+            android:lineSpacingMultiplier="1.2"
+            tools:text="I'm looking through you while you're looking through your phone, and then leaving with somebody else"
+            android:textColor="@color/blackPrimary" />
+
+
+        <iambedoy.coco.chat.components.ChatContentView
+            android:id="@+id/chat_content_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/in_plain_message_text_time_ago"
+        android:visibility="gone"
+        android:id="@+id/plain_message_text_time_ago"
         android:layout_marginTop="@dimen/small_size"
         android:layout_marginStart="@dimen/common_size"
         android:layout_marginBottom="@dimen/common_size"
@@ -30,7 +44,7 @@
         android:textColor="@color/blackSecondary"
         android:layout_width="wrap_content"
         android:textSize="@dimen/small_text_size"
-        tools:text="Time ago"
+        android:text="Time ago"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>

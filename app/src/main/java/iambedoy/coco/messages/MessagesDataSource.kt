@@ -1,5 +1,6 @@
 package iambedoy.coco.messages
 
+import iambedoy.coco.chat.RandomMetadataUtil
 import iambedoy.coco.common.CommonTitleItem
 import iambedoy.coco.models.RandomUserResultResponse
 import zlc.season.yasha.YashaDataSource
@@ -19,10 +20,11 @@ class MessagesDataSource(
 
         list.add(CommonTitleItem(text = title))
 
-        source.forEach {
-            list.add(MessageItem(user = it))
-        }
+        val randomMessages = RandomMetadataUtil.randomMessages.shuffled()
 
+        source.forEachIndexed{index, user ->
+            list.add(MessageItem(user = user, messageText = randomMessages[index]))
+        }
 
         loadCallback.setResult(
             list
