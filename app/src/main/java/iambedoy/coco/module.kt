@@ -4,10 +4,12 @@ import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import iambedoy.coco.explorer.ExplorerFragment
 import iambedoy.coco.messages.MessagesFragment
 import iambedoy.coco.messages.MessagesRepository
 import iambedoy.coco.messages.MessagesViewModel
 import iambedoy.coco.services.RandomUserService
+import iambedoy.coco.settings.SettingsFragment
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -38,6 +40,12 @@ val viewModel = module {
 val fragment = module {
     factory {
         MessagesFragment()
+    }
+    factory {
+        ExplorerFragment()
+    }
+    factory {
+        SettingsFragment()
     }
 }
 

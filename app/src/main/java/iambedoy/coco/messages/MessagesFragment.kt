@@ -9,8 +9,10 @@ import androidx.lifecycle.Observer
 import coil.api.load
 import coil.transform.CircleCropTransformation
 import iambedoy.coco.R
+import iambedoy.coco.common.CommonTitleItem
 import kotlinx.android.synthetic.main.fragment_common.*
 import kotlinx.android.synthetic.main.view_holder_chat_message.*
+import kotlinx.android.synthetic.main.view_holder_common_title.*
 import org.koin.android.ext.android.inject
 import zlc.season.yasha.linear
 
@@ -38,16 +40,22 @@ class MessagesFragment : Fragment(){
             if(source.isNotEmpty()){
                 common_recycler_view.visibility = View.VISIBLE
                 common_recycler_view.linear(
-                    MessagesDataSource(source)
+                    MessagesDataSource(title = "Messages", source = source)
                 ){
                     renderItem<MessageItem> {
                         res (R.layout.view_holder_chat_message)
                         onBind {
-                            chat_message_nickname.text = "${data.response.name.first} ${data.response.name.last}"
-                            chat_message_avatar.load(data.response.picture.medium){
+                            chat_message_nickname.text = "${data.user.name.first} ${data.user.name.last}"
+                            chat_message_avatar.load(data.user.picture.large){
                                 crossfade(true)
                                 transformations(CircleCropTransformation())
                             }
+                        }
+                    }
+                    renderItem<CommonTitleItem> {
+                        res(R.layout.view_holder_common_title)
+                        onBind {
+                            common_title_view.text = data.text
                         }
                     }
                 }

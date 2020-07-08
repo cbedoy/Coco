@@ -10,6 +10,6 @@ import retrofit2.http.GET
  * Created by bedoy on 07/07/20.
  */
 interface RandomUserService {
-    @GET("?results=100")
+    @GET("?results=10")
     suspend fun getRandomUsers() : NetworkResponse<RandomUserResponse, Void>
 }

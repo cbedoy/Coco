@@ -8,4 +8,4 @@ import zlc.season.yasha.YashaItem
  *
  * Created by bedoy on 08/07/20.
  */
-class MessageItem (val response: RandomUserResultResponse): YashaItem
+class MessageItem (val user: RandomUserResultResponse): YashaItem

@@ -1,7 +1,6 @@
-package iambedoy.coco.messages
+package iambedoy.coco.settings
 
 import iambedoy.coco.common.CommonTitleItem
-import iambedoy.coco.models.RandomUserResultResponse
 import zlc.season.yasha.YashaDataSource
 import zlc.season.yasha.YashaItem
 
@@ -10,18 +9,14 @@ import zlc.season.yasha.YashaItem
  *
  * Created by bedoy on 08/07/20.
  */
-class MessagesDataSource(
-    private val title: String = "",
-    private val source: List<RandomUserResultResponse> = emptyList()
+class SettingsDataSource(
+    private val title: String = ""
 ) : YashaDataSource(){
     override fun loadInitial(loadCallback: LoadCallback<YashaItem>) {
         val list = mutableListOf<YashaItem>()
 
         list.add(CommonTitleItem(text = title))
 
-        source.forEach {
-            list.add(MessageItem(user = it))
-        }
 
 
         loadCallback.setResult(
