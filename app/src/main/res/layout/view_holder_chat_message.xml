@@ -8,7 +8,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/chat_message_avatar"
         android:layout_width="@dimen/large_size"
         android:layout_height="@dimen/large_size"
         android:layout_marginStart="16dp"
@@ -25,14 +25,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/common_size"
+        android:layout_marginEnd="144dp"
         android:fontFamily="@font/roboto_medium"
-        tools:text="Carlos Bedoy"
-        android:textSize="16sp"
         android:textColor="@color/blackPrimary"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/chat_message_time_ago"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/chat_message_avatar"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Carlos Bedoy" />
 
     <TextView
         android:id="@+id/chat_message_time_ago"
@@ -57,7 +58,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/chat_message_avatar"
         app:layout_constraintTop_toBottomOf="@+id/chat_message_time_ago">
 
         <TextView
@@ -70,9 +71,10 @@
             android:textColor="@color/blackHint"
             android:paddingEnd="@dimen/small_size"
             android:textSize="14sp"
-            tools:text="I'm mobile developer working as developer for one application " />
+            android:text="I'm mobile developer working as developer for one application " />
 
         <TextView
+            android:visibility="gone"
             android:gravity="center"
             android:layout_gravity="center"
             android:id="@+id/chat_message_badge"
@@ -85,5 +87,17 @@
             tools:text="+9" />
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/backgroundColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chat_message_avatar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
