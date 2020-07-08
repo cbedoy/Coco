@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/white"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_marginTop="@dimen/common_size"
+        android:layout_marginStart="@dimen/common_size"
+        android:layout_marginEnd="@dimen/large_size"
+        android:id="@+id/in_plain_message_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/common_text_size"
+        android:fontFamily="@font/roboto"
+        android:lineSpacingMultiplier="1.2"
+        android:background="@drawable/in_plain_message_drawable"
+        tools:text="I'm looking through you while you're looking through your phone, and then leaving with somebody else"
+        android:textColor="@color/blackPrimary" />
+
+    <TextView
+        android:id="@+id/in_plain_message_text_time_ago"
+        android:layout_marginTop="@dimen/small_size"
+        android:layout_marginStart="@dimen/common_size"
+        android:layout_marginBottom="@dimen/common_size"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/blackSecondary"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/small_text_size"
+        tools:text="Time ago"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

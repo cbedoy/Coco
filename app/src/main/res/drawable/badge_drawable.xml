@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/colorBadge"/>
+
+    <corners android:radius="@dimen/common_size"/>
+
+    <padding android:left="@dimen/tiny_size"
+        android:top="@dimen/tiny_size"
+        android:right="@dimen/tiny_size"
+        android:bottom="@dimen/tiny_size" />
+</shape>
