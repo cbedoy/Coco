@@ -10,6 +10,8 @@ import iambedoy.coco.chat.components.ChatContentView
 import iambedoy.coco.chat.components.ChatContentView.THEME.Black
 import iambedoy.coco.chat.components.ChatContentView.THEME.White
 import kotlinx.android.synthetic.main.fragment_chat.*
+import kotlinx.android.synthetic.main.view_holder_date_message.*
+import kotlinx.android.synthetic.main.view_holder_event_message.*
 import kotlinx.android.synthetic.main.view_holder_in_plain_message.*
 import kotlinx.android.synthetic.main.view_holder_in_plain_message.chat_content_view
 import kotlinx.android.synthetic.main.view_holder_in_plain_message.plain_message_text
@@ -51,6 +53,19 @@ class ChatFragment : Fragment(){
                     plain_message_text.text = data.message.text
                     chat_content_view.theme = White
                     chat_content_view.metadata = data.message.metadata
+                }
+            }
+            renderItem<ChatDateItem> {
+                res(R.layout.view_holder_date_message)
+                onBind {
+                    chat_message_time_ago.text = data.text
+                }
+            }
+
+            renderItem<ChatEventItem> {
+                res(R.layout.view_holder_event_message)
+                onBind {
+                    chat_message_event.text = data.text
                 }
             }
         }

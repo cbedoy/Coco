@@ -11,3 +11,7 @@ import zlc.season.yasha.YashaItem
 class ChatInMessageItem(val message: Message) : YashaItem
 
 class ChatOutMessageItem(val message: Message) : YashaItem
+
+class ChatEventItem(val text: String) : YashaItem
+
+class ChatDateItem(val text: String) : YashaItem

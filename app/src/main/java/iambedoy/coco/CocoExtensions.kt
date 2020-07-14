@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import kotlin.random.Random
 
 /**
  * Coco
@@ -29,4 +30,12 @@ fun View.visibleIfTrueOtherwiseInvisible(condition: Boolean?){
 fun TextView.reloadTextIfEmptyThenGone(newText: String){
     text = newText
     visibility = if(text.isEmpty()) View.GONE else View.VISIBLE
+}
+
+fun <T> MutableList<T>.randomBasedOfSize() : Int{
+    return Random(System.currentTimeMillis()).nextInt(this.size)
+}
+
+fun <T> MutableList<T>.insertItemInRandom(item: T){
+    this[randomBasedOfSize()] = item
 }

@@ -11,6 +11,7 @@ import coil.api.load
 import coil.transform.CircleCropTransformation
 import iambedoy.coco.ChatActivity
 import iambedoy.coco.R
+import iambedoy.coco.chat.ChatEventItem
 import iambedoy.coco.common.CommonTitleItem
 import kotlinx.android.synthetic.main.fragment_common.*
 import kotlinx.android.synthetic.main.view_holder_chat_message.*
@@ -52,6 +53,7 @@ class MessagesFragment : Fragment(){
                                 crossfade(true)
                                 transformations(CircleCropTransformation())
                             }
+                            chat_message_text.text = data.messageText
                             chat_message_view.setOnClickListener {
                                 startActivity(
                                     Intent(context, ChatActivity::class.java).apply {
@@ -65,6 +67,12 @@ class MessagesFragment : Fragment(){
                         res(R.layout.view_holder_common_title)
                         onBind {
                             common_title_view.text = data.text
+                        }
+                    }
+                    renderItem<ChatEventItem> {
+                        res(R.layout.view_holder_event_message)
+                        onBind {
+                            chat_message_time_ago.text = data.text
                         }
                     }
                 }
