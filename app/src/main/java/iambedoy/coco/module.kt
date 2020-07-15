@@ -5,6 +5,8 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import iambedoy.coco.chat.ChatFragment
+import iambedoy.coco.chat.ChatRepository
+import iambedoy.coco.chat.ChatViewModel
 import iambedoy.coco.explorer.ExplorerFragment
 import iambedoy.coco.messages.MessagesFragment
 import iambedoy.coco.messages.MessagesRepository
@@ -36,6 +38,9 @@ val viewModel = module {
     factory {
         MessagesViewModel(get())
     }
+    factory {
+        ChatViewModel(get())
+    }
 }
 
 val fragment = module {
@@ -56,6 +61,9 @@ val fragment = module {
 val repository = module {
     single {
         MessagesRepository(get())
+    }
+    single{
+        ChatRepository()
     }
 }
 

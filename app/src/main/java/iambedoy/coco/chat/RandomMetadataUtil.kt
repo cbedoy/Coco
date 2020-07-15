@@ -1,6 +1,6 @@
 package iambedoy.coco.chat
 
-import iambedoy.coco.models.MetadataMessage
+import iambedoy.coco.models.chat.MetadataMessage
 
 /**
  * Coco

@@ -1,14 +1,13 @@
 package iambedoy.coco.chat.components
 
 import android.content.Context
-import android.content.res.Resources
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import coil.api.load
 import iambedoy.coco.R
-import iambedoy.coco.models.MetadataMessage
+import iambedoy.coco.models.chat.MetadataMessage
 import iambedoy.coco.reloadTextIfEmptyThenGone
 import iambedoy.coco.visibleIfTrueOtherwiseGone
 import kotlinx.android.synthetic.main.view_media_content.view.*
@@ -43,7 +42,8 @@ class ChatContentView @JvmOverloads constructor(
             }
         }
 
-    var metadata: MetadataMessage = MetadataMessage()
+    var metadata: MetadataMessage =
+        MetadataMessage()
         set(value) {
             field = value
 

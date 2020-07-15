@@ -8,5 +8,5 @@ package iambedoy.coco.chat
 class ChatViewModel (
     private val repository: ChatRepository
 ){
-
+    val messages = repository.randomMessages
 }

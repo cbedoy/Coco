@@ -1,4 +1,4 @@
-package iambedoy.coco.models
+package iambedoy.coco.models.chat
 
 /**
  * Coco
