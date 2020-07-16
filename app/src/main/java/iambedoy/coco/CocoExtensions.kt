@@ -1,19 +1,27 @@
 package iambedoy.coco
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.content.Intent
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 import com.google.gson.JsonElement
+import com.google.gson.reflect.TypeToken
 import kotlin.random.Random
+
 
 /**
  * Coco
  *
  * Created by bedoy on 08/07/20.
  */
+typealias completion = () -> Unit
+
 fun AppCompatActivity.showFragment(targetFragment: Fragment){
     if (!supportFragmentManager.fragments.contains(targetFragment)){
         supportFragmentManager.beginTransaction()
@@ -51,6 +59,26 @@ fun <T : AppCompatActivity> View.startActivityWhenOnClickListener(clazz: Class<T
     }
 }
 
-inline fun <reified T> JsonElement.toObject(): T {
-    return Gson().fromJson<T>(this, T::class.java)
+fun View.setCollapseExpand(collapsibleView: View, onCollapse: completion = {}, onExpand: completion = {}) {
+    setOnClickListener {
+        when (collapsibleView.visibility) {
+            View.GONE -> {
+                collapsibleView.visibility = View.VISIBLE
+                onExpand()
+            }
+            View.VISIBLE -> {
+                collapsibleView.visibility = View.GONE
+                onCollapse()
+            }
+        }
+    }
+}
+
+
+inline fun <reified T> fromJson(json: String): T {
+    return Gson().fromJson(json, object: TypeToken<T>(){}.type)
+}
+
+inline fun <reified T> fromJson(json: JsonElement): T {
+    return Gson().fromJson(json, object: TypeToken<T>(){}.type)
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3b6978</color>
-    <color name="colorPrimaryDark">#204051</color>
-    <color name="colorAccent">#ffcb74</color>
+    <color name="colorPrimary">#6ebfb5</color>
+    <color name="colorPrimaryDark">#24a19c</color>
+    <color name="colorAccent">#ff5f40</color>
 
     <color name="backgroundColor">#e4e3e3</color>
 
@@ -13,7 +13,7 @@
     <color name="colorBadge">@color/colorPrimary</color>
     <color name="dividerColor">@color/backgroundColor</color>
 
-    <color name="in_message_color">#b2c9cb</color>
+    <color name="in_message_color">#ffc7c7</color>
     <color name="out_message_color">@color/colorPrimary</color>
 
 </resources>

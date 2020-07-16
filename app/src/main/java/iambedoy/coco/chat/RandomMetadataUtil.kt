@@ -38,12 +38,9 @@ object RandomMetadataUtil {
     private val images = listOf(
         "https://cdn.dribbble.com/users/3884350/screenshots/13005389/media/8d0b300657859eebf0dd8676bf3e4310.jpg",
         "https://cdn.dribbble.com/users/4859/screenshots/12927392/media/d21215d50131aa5b7d2613a7b9c49627.png",
-        "https://pbs.twimg.com/media/ECi3OCpX4AA-AL0.jpg",
-        "https://1.bp.blogspot.com/-tsNq3jEFV68/Vf36txW2fjI/AAAAAAAADEg/htx62V24FjY/s1600/riae_suicide.jpg",
-        "https://images.unsplash.com/photo-1582552172200-e9527ecaae21?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-        "https://pbs.twimg.com/media/D7O3IPoWkAE9u9v.jpg",
-        "https://pbs.twimg.com/profile_images/608050040838455296/2piFJHUh_400x400.jpg",
-        "https://pbs.twimg.com/media/D-21d0BX4AE8YZI.jpg",
+        "https://i1.sndcdn.com/avatars-000715068814-hs77ar-t500x500.jpg",
+        "https://cdn2.thelineofbestfit.com/media/2012/04/whitestboyalive.jpg",
+        "https://cdn.photographypro.com/wp-content/uploads/2018/01/shoot-panoramic-photos-2@2x-1.jpg",
         "", "", "", "", "", "", "", ""
     )
 

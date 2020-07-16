@@ -11,6 +11,8 @@ import iambedoy.coco.explorer.ExplorerFragment
 import iambedoy.coco.messages.MessagesFragment
 import iambedoy.coco.messages.MessagesRepository
 import iambedoy.coco.messages.MessagesViewModel
+import iambedoy.coco.pubnub.PubNubRepository
+import iambedoy.coco.pubnub.PubNubService
 import iambedoy.coco.services.RandomUserService
 import iambedoy.coco.settings.SettingsFragment
 import org.koin.dsl.module
@@ -39,7 +41,7 @@ val viewModel = module {
         MessagesViewModel(get())
     }
     factory {
-        ChatViewModel(get())
+        ChatViewModel(get(), get())
     }
 }
 
@@ -65,11 +67,17 @@ val repository = module {
     single{
         ChatRepository()
     }
+    single {
+        PubNubRepository(get())
+    }
 }
 
 val service = module {
     single {
         retrofit.create(RandomUserService::class.java)
+    }
+    single {
+        PubNubService()
     }
 }
 

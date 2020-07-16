@@ -66,6 +66,8 @@ dependencies {
 
     implementation "com.github.haroldadmin:NetworkResponseAdapter:4.0.1"
 
+    implementation 'org.jsoup:jsoup:1.9.1'
+
     implementation "com.squareup.moshi:moshi:1.9.2"
     implementation "com.squareup.moshi:moshi-adapters:1.9.2"
     implementation "com.squareup.moshi:moshi-kotlin:1.9.2"

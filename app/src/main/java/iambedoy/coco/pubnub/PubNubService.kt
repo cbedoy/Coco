@@ -14,10 +14,13 @@ import com.pubnub.api.models.consumer.pubsub.message_actions.PNMessageActionResu
 import com.pubnub.api.models.consumer.pubsub.objects.PNMembershipResult
 import com.pubnub.api.models.consumer.pubsub.objects.PNSpaceResult
 import com.pubnub.api.models.consumer.pubsub.objects.PNUserResult
-import iambedoy.coco.models.chat.Message
+import iambedoy.coco.fromJson
 import iambedoy.coco.models.chat.Message.ChatMessage
 import iambedoy.coco.models.chat.Presence
-import iambedoy.coco.toObject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 /**
@@ -25,6 +28,9 @@ import iambedoy.coco.toObject
  *
  * Created by bedoy on 14/07/20.
  */
+
+typealias historyCompletion = (messages: List<ChatMessage>) -> Unit
+
 class PubNubService {
 
     private val pubNub: PubNub = PubNub(PNConfiguration().apply {
@@ -68,7 +74,12 @@ class PubNubService {
             }
 
             override fun message(pubnub: PubNub, pnMessageResult: PNMessageResult) {
-                _receivedMessages.value = pnMessageResult.message.toObject<ChatMessage>()
+                try {
+                    val message = fromJson<ChatMessage>(pnMessageResult.message)
+                    _receivedMessages.postValue(message)
+                }catch (e: java.lang.Exception){
+                    e.printStackTrace()
+                }
             }
 
             override fun space(pubnub: PubNub, pnSpaceResult: PNSpaceResult) {
@@ -85,30 +96,30 @@ class PubNubService {
     val receivedPresences : LiveData<Presence>
         get() = _receivedPresences
 
-    suspend fun loadHistoryFromChannel(channel: String) : LiveData<List<ChatMessage>> {
-        return liveData {
-            try {
-                pubNub.history().channel(channel).count(10).sync()?.let {
-                    emit(it.messages.map { historyResult ->
-                        historyResult.entry.toObject<ChatMessage>()
-                    })
+    fun loadHistoryFromChannel(channel: String, completion: historyCompletion) {
+        pubNub.history().channel(channel).count(10).async { result, status ->
+            if(!status.isError){
+                GlobalScope.launch{
+                    val messages = mutableListOf<ChatMessage>()
+                    result?.messages?.forEach { resultMessage ->
+                        resultMessage?.entry?.let {
+                            messages.add(fromJson(it))
+                        }
+                    }
+                    completion(messages)
                 }
-            }catch (e: Exception){
-                emit(emptyList())
+            }else{
+                completion(emptyList())
             }
         }
     }
 
-    suspend fun publishMessageToChannel(message: ChatMessage, channel: String) : LiveData<Message>{
-        return liveData{
-            try {
-                pubNub.publish().channel(channel).message(message).sync()
-                emit(message)
-            }catch (e: Exception){
-                emit(Message.ErrorMessage(e.localizedMessage?:""))
-            }
-        }
+    fun publishMessageToChannel(message: ChatMessage, channel: String){
+        pubNub.publish().channel(channel).message(message).shouldStore(true).async { result, status ->  }
+    }
 
+    fun subscribeToChannel(channelId: String){
+        pubNub.subscribe().channels(listOf(channelId)).withPresence().execute()
     }
 }
 

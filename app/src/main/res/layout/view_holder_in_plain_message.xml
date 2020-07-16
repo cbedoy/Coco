@@ -1,38 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardView="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="@dimen/common_size"
-    android:layout_marginStart="@dimen/common_size"
-    android:layout_marginEnd="@dimen/large_size"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    cardView:cardUseCompatPadding="true"
-    cardView:cardBackgroundColor="@color/in_message_color"
-    cardView:cardCornerRadius="8dp"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width= "match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/plain_message_nickname"
+        android:layout_marginTop="@dimen/small_size"
+        android:layout_marginStart="@dimen/chat_margin_incoming_text"
+        android:layout_marginEnd="@dimen/common_size"
+        android:layout_marginBottom="@dimen/small_size"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/blackPrimary"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/small_text_size"
+        android:text="@string/lorem"
+        android:maxLines="1"
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width= "match_parent"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:padding="@dimen/tiny_size"
-            android:id="@+id/plain_message_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/common_text_size"
-            android:fontFamily="@font/roboto"
-            android:lineSpacingMultiplier="@dimen/lineSpace"
-            tools:text="I'm looking through you while you're looking through your phone, and then leaving with somebody else"
-            android:textColor="@color/blackPrimary" />
+        <ImageView
+            android:id="@+id/plain_message_avatar"
+            android:layout_marginStart="@dimen/small_size"
+            android:adjustViewBounds="true"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/small_size"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            tools:srcCompat="@tools:sample/avatars" />
 
-
-        <iambedoy.coco.chat.components.ChatContentView
-            android:id="@+id/chat_content_view"
+        <androidx.cardview.widget.CardView
+            android:layout_marginStart="@dimen/small_size"
+            android:layout_marginEnd="@dimen/large_size"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:orientation="vertical"
+            cardView:cardUseCompatPadding="true"
+            cardView:cardBackgroundColor="@color/in_message_color"
+            cardView:cardCornerRadius="8dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width= "match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:padding="@dimen/tiny_size"
+                    android:id="@+id/plain_message_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/common_text_size"
+                    android:fontFamily="@font/roboto"
+                    android:lineSpacingMultiplier="@dimen/lineSpace"
+                    tools:text="I'm looking through you while you're looking through your phone, and then leaving with somebody else"
+                    android:textColor="@color/blackPrimary" />
+
+
+                <iambedoy.coco.chat.components.ChatContentView
+                    android:id="@+id/chat_content_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 
@@ -40,13 +78,13 @@
         android:visibility="gone"
         android:id="@+id/plain_message_text_time_ago"
         android:layout_marginTop="@dimen/small_size"
-        android:layout_marginStart="@dimen/common_size"
+        android:layout_marginStart="@dimen/chat_margin_incoming_text"
+        android:layout_marginEnd="@dimen/common_size"
         android:layout_marginBottom="@dimen/common_size"
         android:fontFamily="@font/roboto"
         android:textColor="@color/blackSecondary"
         android:layout_width="wrap_content"
         android:textSize="@dimen/small_text_size"
-        android:text="Time ago"
+        android:text="@string/lorem"
         android:layout_height="wrap_content"/>
-
-</androidx.cardview.widget.CardView>
+</LinearLayout>

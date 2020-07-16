@@ -7,7 +7,6 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:layout_marginTop="@dimen/tiny_size"
         android:id="@+id/view_media_content_thumbnail"
         android:adjustViewBounds="true"
         android:layout_width="match_parent"

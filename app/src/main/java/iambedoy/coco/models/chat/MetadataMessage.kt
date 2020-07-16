@@ -9,5 +9,6 @@ data class MetadataMessage(
     val thumbnail: String = "",
     val title: String = "",
     val description: String = "",
-    val service: String = ""
+    val service: String = "",
+    val playable: Boolean = false
 )
