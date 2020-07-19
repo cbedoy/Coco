@@ -1,4 +1,5 @@
-# Coco
+# Coco   [![Build Status](https://travis-ci.com/cbedoy/Coco.svg?branch=master)](https://travis-ci.com/cbedoy/Coco)
+
 
 # Author
 
