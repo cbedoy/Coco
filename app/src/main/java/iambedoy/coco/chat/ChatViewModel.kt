@@ -1,7 +1,6 @@
 package iambedoy.coco.chat
 
 import androidx.lifecycle.*
-import iambedoy.coco.common.ScraptRepository
 import iambedoy.coco.models.chat.Message
 import iambedoy.coco.pubnub.PubNubRepository
 import kotlinx.coroutines.Dispatchers
@@ -16,8 +15,7 @@ import java.util.*
  */
 class ChatViewModel (
     private val repository: ChatRepository,
-    private val pubNubRepository: PubNubRepository,
-    private val scraptRepository: ScraptRepository
+    private val pubNubRepository: PubNubRepository
 ) : ViewModel(){
 
     private var _channelId : String = ""
@@ -45,7 +43,7 @@ class ChatViewModel (
     }
 
     fun sendMessage(messageText: String){
-        /*if (messageText.isNotEmpty() && !messageText.isBlank()){
+        if (messageText.isNotEmpty() && !messageText.isBlank()){
             viewModelScope.launch {
                 _channelId.let {
                     pubNubRepository.sendMessageToChannel(Message.ChatMessage(
@@ -55,10 +53,6 @@ class ChatViewModel (
                     ), _channelId)
                 }
             }
-        }
-        */
-        viewModelScope.launch (Dispatchers.IO){
-            scraptRepository.doScraping()
         }
     }
 }

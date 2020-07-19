@@ -7,7 +7,6 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import iambedoy.coco.chat.ChatFragment
 import iambedoy.coco.chat.ChatRepository
 import iambedoy.coco.chat.ChatViewModel
-import iambedoy.coco.common.ScraptRepository
 import iambedoy.coco.explorer.ExplorerFragment
 import iambedoy.coco.messages.MessagesFragment
 import iambedoy.coco.messages.MessagesRepository
@@ -42,7 +41,7 @@ val viewModel = module {
         MessagesViewModel(get())
     }
     factory {
-        ChatViewModel(get(), get(), get())
+        ChatViewModel(get(), get())
     }
 }
 
@@ -70,9 +69,6 @@ val repository = module {
     }
     single {
         PubNubRepository(get())
-    }
-    single {
-        ScraptRepository()
     }
 }
 
