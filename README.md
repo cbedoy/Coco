@@ -9,11 +9,11 @@
 
 
 
-
+# Looking for open positions everywhere
 
 # Author
 
-[Carlos Bedoy](https://www.linkedin.com/in/carlos-bedoy-34248187/) | Lead Mobile Enginner at DagM8
+[Carlos Bedoy](https://www.linkedin.com/in/carlos-bedoy-34248187/) | Android Developer
 
 # License
 
