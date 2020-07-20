@@ -8,16 +8,14 @@
     android:orientation="vertical">
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/plain_message_nickname"
         android:layout_marginTop="@dimen/small_size"
         android:layout_marginStart="@dimen/chat_margin_incoming_text"
         android:layout_marginEnd="@dimen/common_size"
-        android:layout_marginBottom="@dimen/small_size"
         android:fontFamily="@font/roboto"
-        android:textColor="@color/blackPrimary"
+        android:textColor="@color/CurrentLine"
         android:layout_width="wrap_content"
-        android:textSize="@dimen/small_text_size"
+        android:textSize="@dimen/common_text_size"
         android:text="@string/lorem"
         android:maxLines="1"
         android:layout_height="wrap_content"/>
@@ -42,6 +40,7 @@
             android:layout_marginEnd="@dimen/large_size"
             android:layout_width="match_parent"
             android:orientation="vertical"
+            android:id="@+id/plain_message_card"
             cardView:cardUseCompatPadding="true"
             cardView:cardBackgroundColor="@color/in_message_color"
             cardView:cardCornerRadius="8dp"
@@ -61,7 +60,7 @@
                     android:fontFamily="@font/roboto"
                     android:lineSpacingMultiplier="@dimen/lineSpace"
                     tools:text="I'm looking through you while you're looking through your phone, and then leaving with somebody else"
-                    android:textColor="@color/blackPrimary" />
+                    android:textColor="@color/textPrimaryColor" />
 
 
                 <iambedoy.coco.chat.components.ChatContentView
@@ -82,7 +81,7 @@
         android:layout_marginEnd="@dimen/common_size"
         android:layout_marginBottom="@dimen/common_size"
         android:fontFamily="@font/roboto"
-        android:textColor="@color/blackSecondary"
+        android:textColor="@color/textSecondaryColor"
         android:layout_width="wrap_content"
         android:textSize="@dimen/small_text_size"
         android:text="@string/lorem"

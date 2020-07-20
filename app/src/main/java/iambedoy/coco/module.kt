@@ -13,8 +13,11 @@ import iambedoy.coco.messages.MessagesRepository
 import iambedoy.coco.messages.MessagesViewModel
 import iambedoy.coco.pubnub.PubNubRepository
 import iambedoy.coco.pubnub.PubNubService
+import iambedoy.coco.services.ExtractService
 import iambedoy.coco.services.RandomUserService
 import iambedoy.coco.settings.SettingsFragment
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -25,16 +28,30 @@ import retrofit2.converter.moshi.MoshiConverterFactory
  * Created by bedoy on 07/07/20.
  */
 
+private fun Retrofit.Builder.createInstanceFor(baseUrl: String): Retrofit {
+
+
+    val client = OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor().apply {
+        HttpLoggingInterceptor.Level.BASIC
+    }).build()
+
+    return baseUrl(baseUrl)
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .addCallAdapterFactory(NetworkResponseAdapterFactory())
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        .client(client)
+        .build()
+}
+
 val moshi: Moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
 
-val retrofit: Retrofit = Retrofit.Builder()
-    .baseUrl("https://randomuser.me/api/")
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .addCallAdapterFactory(NetworkResponseAdapterFactory())
-    .addCallAdapterFactory(CoroutineCallAdapterFactory())
-    .build()
+
+val retrofitRandomService = Retrofit.Builder().createInstanceFor("https://randomuser.me/api/")
+val retrofitEmbedLyService = Retrofit.Builder().createInstanceFor("http://api.embed.ly/")
+
+
 
 val viewModel = module {
     factory {
@@ -65,7 +82,7 @@ val repository = module {
         MessagesRepository(get())
     }
     single{
-        ChatRepository()
+        ChatRepository(get())
     }
     single {
         PubNubRepository(get())
@@ -74,7 +91,10 @@ val repository = module {
 
 val service = module {
     single {
-        retrofit.create(RandomUserService::class.java)
+        retrofitRandomService.create(RandomUserService::class.java)
+    }
+    single {
+        retrofitEmbedLyService.create(ExtractService::class.java)
     }
     single {
         PubNubService()

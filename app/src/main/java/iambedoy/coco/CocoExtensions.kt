@@ -7,6 +7,7 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
@@ -71,6 +72,12 @@ fun View.setCollapseExpand(collapsibleView: View, onCollapse: completion = {}, o
                 onCollapse()
             }
         }
+    }
+}
+
+fun CardView.setCardBackgroundColor2(color: Int ){
+    context?.let { context ->
+        setCardBackgroundColor(context.getColor(color))
     }
 }
 

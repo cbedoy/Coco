@@ -47,11 +47,8 @@ class ChatFragment : Fragment(){
         chat_recycler_view.adapter = adapter
 
         viewModel.messages.observe(viewLifecycleOwner, Observer { message ->
-            adapter.add(0, if(message.text.length % 2 == 0){
-                ChatInMessageItem(message)
-            }else{
-                ChatOutMessageItem(message)
-            })
+
+            adapter.add(message)
 
             chat_recycler_view.scrollToPosition(0)
         })
@@ -69,13 +66,7 @@ class ChatFragment : Fragment(){
             }
         }
         viewModel.history.observe(viewLifecycleOwner, Observer { messages ->
-            messages?.map { item ->
-                adapter.add(0, if(item.text.length % 2 == 0){
-                    ChatInMessageItem(item)
-                }else{
-                    ChatOutMessageItem(item)
-                })
-            }
+            adapter.addAll(messages)
         })
 
         viewModel.presences.observe(viewLifecycleOwner, Observer { presence ->
@@ -86,6 +77,6 @@ class ChatFragment : Fragment(){
     override fun onResume() {
         super.onResume()
 
-        viewModel.subscribeToChannel("coco-chu")
+        viewModel.subscribeToChannel("belnor")
     }
 }

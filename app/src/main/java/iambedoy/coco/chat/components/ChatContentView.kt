@@ -26,19 +26,14 @@ class ChatContentView @JvmOverloads constructor(
         LayoutInflater.from(context).inflate(R.layout.view_media_content, this, true)
     }
 
-    enum class THEME{
-        White, Black
-    }
-
-    var theme: THEME = THEME.White
+    var incoming: Boolean = false
         set(value) {
             field = value
-            val color = if(value == THEME.White) android.R.color.white else R.color.blackPrimary
 
-            ContextCompat.getColor(context, color).let {
-                view_media_content_title.setTextColor(it)
-                view_media_content_description.setTextColor(it)
-                view_media_content_service.setTextColor(it)
+            if(field){
+                view_media_content.setBackgroundResource(0)
+            }else{
+                view_media_content.setBackgroundResource(R.color.CurrentLine)
             }
         }
 

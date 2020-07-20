@@ -2,7 +2,6 @@ package iambedoy.coco.pubnub
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.liveData
 import com.pubnub.api.PNConfiguration
 import com.pubnub.api.PubNub
 import com.pubnub.api.callbacks.SubscribeCallback
@@ -17,10 +16,8 @@ import com.pubnub.api.models.consumer.pubsub.objects.PNUserResult
 import iambedoy.coco.fromJson
 import iambedoy.coco.models.chat.Message.ChatMessage
 import iambedoy.coco.models.chat.Presence
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 /**
@@ -115,11 +112,17 @@ class PubNubService {
     }
 
     fun publishMessageToChannel(message: ChatMessage, channel: String){
-        pubNub.publish().channel(channel).message(message).shouldStore(true).async { result, status ->  }
+        pubNub.publish().channel(channel).message(message).shouldStore(true).async { result, status ->
+
+        }
     }
 
     fun subscribeToChannel(channelId: String){
         pubNub.subscribe().channels(listOf(channelId)).withPresence().execute()
+    }
+
+    fun registerUser(userId: String) {
+        pubNub.configuration.uuid = userId
     }
 }
 

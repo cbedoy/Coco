@@ -1,51 +1,38 @@
 package iambedoy.coco.chat
 
-import androidx.lifecycle.liveData
-import com.github.marlonlom.utilities.timeago.TimeAgo
-import iambedoy.coco.chat.items.ChatDateItem
-import iambedoy.coco.chat.items.ChatEventItem
-import iambedoy.coco.chat.items.ChatInMessageItem
-import iambedoy.coco.chat.items.ChatOutMessageItem
-import iambedoy.coco.insertItemInRandom
-import iambedoy.coco.models.chat.Message
-import java.util.*
+import com.haroldadmin.cnradapter.NetworkResponse
+import iambedoy.coco.models.chat.MetadataMessage
+import iambedoy.coco.services.ExtractService
 
 /**
  * Coco
  *
  * Created by bedoy on 08/07/20.
  */
-class ChatRepository {
-
-    val randomMessages = liveData {
-        val messages = RandomMetadataUtil.randomMessages.map {
-            if (it.isNotEmpty() && it.length % 2 == 0) {
-                ChatOutMessageItem(
-                    Message.ChatMessage(
-                        text = it,
-                        metadata = RandomMetadataUtil.randomMessage()
+class ChatRepository(
+    private val noEmbedService: ExtractService
+){
+    suspend fun getLinkMetadata(url: String) : MetadataMessage {
+        return when(val call = noEmbedService.getMetadataLink(url, "e33332a0146045eea14b082e9f39e90e")){
+            is NetworkResponse.Success -> {
+                call.body.let {
+                    MetadataMessage(
+                        thumbnail = it.images.firstOrNull()?.thumbnailUrl?:"",
+                        title = it.title,
+                        description = it.description,
+                        type = it.type,
+                        favicon = it.faviconUrl,
+                        service = it.providerName,
+                        url = it.url,
+                        originalUrl = it.originalUrl,
+                        playable = it.media.html.isNotEmpty(),
+                        playableContent = it.media.html
                     )
-                )
-            } else {
-                ChatInMessageItem(
-                    Message.ChatMessage(
-                        text = it,
-                        metadata = RandomMetadataUtil.randomMessage()
-                    )
-                )
+                }
             }
-        }.toMutableList()
-
-        messages.insertItemInRandom(ChatDateItem(TimeAgo.using(System.currentTimeMillis() - 999999)))
-        messages.insertItemInRandom(ChatDateItem(TimeAgo.using(System.currentTimeMillis() - (Random().nextInt(99999) - 999999))))
-
-        messages.insertItemInRandom(ChatEventItem("Someone have joined to this room"))
-        messages.insertItemInRandom(ChatEventItem("New content have been added to explorer"))
-        messages.insertItemInRandom(ChatEventItem("Oops it seem some else get infected by covid19"))
-
-        emit(messages)
+            else -> {
+                MetadataMessage()
+            }
+        }
     }
-
-
-
 }

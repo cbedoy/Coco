@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/Background"
     android:layout_height="wrap_content">
 
    <LinearLayout
@@ -21,15 +21,15 @@
        <EditText
            android:id="@+id/chat_input_field"
            android:layout_marginStart="@dimen/tiny_size"
-           android:background="@android:color/white"
-           android:hint="Type something"
+           android:background="@color/Background"
+           android:hint="@string/type_something"
            android:layout_weight="1"
            android:maxLines="4"
            android:fontFamily="@font/roboto"
-           android:textColorHint="@color/blackHint"
-           android:textColor="@color/blackPrimary"
+           android:textColorHint="@color/textHintColor"
+           android:textColor="@color/textPrimaryColor"
            android:textSize="@dimen/common_text_size"
-           android:layout_width="match_parent"
+           android:layout_width="0dp"
            android:layout_height="wrap_content"/>
 
        <ImageView
@@ -54,6 +54,7 @@
         android:background="@drawable/circle_drawable"
         android:src="@drawable/action_send"
         android:layout_width="wrap_content"
+        android:scaleType="centerCrop"
         android:layout_gravity="center"
         android:layout_marginEnd="@dimen/tiny_size"
         android:layout_height="wrap_content"/>

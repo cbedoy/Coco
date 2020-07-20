@@ -28,7 +28,7 @@
         android:layout_marginTop="@dimen/common_size"
         android:layout_marginEnd="144dp"
         android:fontFamily="@font/roboto_medium"
-        android:textColor="@color/blackPrimary"
+        android:textColor="@color/textPrimaryColor"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/chat_message_time_ago"
         app:layout_constraintHorizontal_bias="0.0"
@@ -45,7 +45,7 @@
         android:fontFamily="@font/roboto_medium"
         android:textSize="12sp"
         android:text="Time ago"
-        android:textColor="@color/blackHint"
+        android:textColor="@color/textHintColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto"
             android:maxLines="2"
-            android:textColor="@color/blackHint"
+            android:textColor="@color/textHintColor"
             android:paddingEnd="@dimen/small_size"
             android:textSize="14sp"
             android:text="I'm mobile developer working as developer for one application " />

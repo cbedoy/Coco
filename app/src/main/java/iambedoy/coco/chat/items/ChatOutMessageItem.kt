@@ -16,8 +16,8 @@ import kotlinx.android.synthetic.main.view_holder_out_plain_message.*
 class ChatOutMessageItem(val message: Message.ChatMessage) : Item() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.plain_message_text.text = message.text
-        viewHolder.chat_content_view.theme = ChatContentView.THEME.White
         viewHolder.chat_content_view.metadata = message.metadata
+        viewHolder.chat_content_view.incoming = false
         viewHolder.itemView.setCollapseExpand(viewHolder.plain_message_text_time_ago)
     }
 

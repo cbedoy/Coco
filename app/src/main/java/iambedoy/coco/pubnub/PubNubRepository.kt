@@ -17,6 +17,7 @@ class PubNubRepository (
     fun subscribeToChannel(channelId: String) = service.subscribeToChannel(channelId)
 
     fun sendMessageToChannel(chatMessage: Message.ChatMessage, channelId: String) = service.publishMessageToChannel(chatMessage, channelId)
+    fun registerUser(userId: String) = service.registerUser(userId)
 
     val receivedPresences = service.receivedPresences
     val receivedMessages = service.receivedMessages

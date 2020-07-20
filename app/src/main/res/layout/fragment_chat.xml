@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="bottom"
-    android:background="@android:color/white"
+    android:background="@color/backgroundColor"
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_weight="1"
         android:id="@+id/chat_recycler_view"
-        android:paddingBottom="@dimen/tiny_size"
-        tools:listitem="@layout/view_holder_in_plain_message"
-        android:layout_height="0dp" />
-
-    <View
-        android:background="@color/backgroundColor"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"/>
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@+id/chat_input_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/view_holder_in_plain_message" />
 
     <iambedoy.coco.chat.components.ChatInputView
         android:id="@+id/chat_input_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

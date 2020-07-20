@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6ebfb5</color>
-    <color name="colorPrimaryDark">#24a19c</color>
-    <color name="colorAccent">#ff5f40</color>
+    <color name="colorPrimary">@color/CurrentLine</color>
+    <color name="colorPrimaryDark">@color/Background</color>
+    <color name="colorAccent">@color/Pink</color>
 
-    <color name="backgroundColor">#e4e3e3</color>
+    <color name="backgroundColor">@color/Background</color>
 
-    <color name="blackPrimary">#333</color>
-    <color name="blackSecondary">#666</color>
-    <color name="blackHint">#999</color>
-    
-    <color name="colorBadge">@color/colorPrimary</color>
-    <color name="dividerColor">@color/backgroundColor</color>
+    <color name="textPrimaryColor">#DCDCDC</color> <!-- 87 -->
+    <color name="textSecondaryColor">#c6c6c1</color> <!-- 60 -->
+    <color name="textHintColor">#949491</color> <!-- 38 -->
 
-    <color name="in_message_color">#ffc7c7</color>
-    <color name="out_message_color">@color/colorPrimary</color>
+    <color name="colorBadge">@color/Pink</color>
+    <color name="dividerColor">@color/Foreground</color>
+
+    <color name="in_message_color">@color/Comment</color>
+    <color name="out_message_color">@color/CurrentLine</color>
+
+    <color name="Background">#282a36</color>
+    <color name="CurrentLine">#44475a</color>
+    <color name="Foreground">#f8f8f2</color>
+    <color name="Comment">#6272a4</color>
+    <color name="Cyan">#8be9fd</color>
+    <color name="Green">#50fa7b</color>
+    <color name="Orange">#ffb86c</color>
+    <color name="Pink">#ff79c6</color>
+    <color name="Purple">#bd93f9</color>
+    <color name="Red">#ff5555</color>
+    <color name="Yellow">#f1fa8c</color>
 
 </resources>

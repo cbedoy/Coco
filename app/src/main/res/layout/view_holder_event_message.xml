@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white"
+    android:background="@color/Background"
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:id="@+id/chat_message_event"
         android:textSize="@dimen/small_text_size"
         android:fontFamily="@font/roboto"
-        android:textColor="@color/blackHint"
+        android:textColor="@color/textSecondaryColor"
         android:padding="@dimen/common_size"
         tools:text="Oops it seem some else get infected by covid19"
         android:layout_width="wrap_content"
