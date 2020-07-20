@@ -1,5 +1,15 @@
 # Coco   [![Build Status](https://travis-ci.com/cbedoy/Coco.svg?branch=master)](https://travis-ci.com/cbedoy/Coco)
 
+# How it looks:
+
+|   |   |
+|---|---|
+|![Sharing](https://media.giphy.com/media/kE8tqVWPsHYNMnqSZF/giphy.gif)|![Sharing](https://media.giphy.com/media/h4TC4BT4zdCvgv2rcc/giphy.gif)|
+
+
+
+
+
 
 # Author
 
