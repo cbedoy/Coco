@@ -10,7 +10,6 @@ import iambedoy.coco.models.chat.MetadataMessage
 import iambedoy.coco.pubnub.PubNubRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.lang.Thread.sleep
 import java.util.*
 
 /**
@@ -25,6 +24,8 @@ class ChatViewModel (
 
     private var _userId = RandomMetadataUtil.randomUsers.shuffled()[0]
 
+    private var _currentMessages = mutableListOf<Item>()
+
     private var _channelId : String = ""
         set(value) {
             field = value
@@ -37,10 +38,21 @@ class ChatViewModel (
         }
 
     private fun prepareMessage(message: Message.ChatMessage): Item {
-        return if (message.user.uuid == _userId.uuid) {
+        val item = if (message.user.uuid == _userId.uuid) {
             ChatOutMessageItem(message)
         } else {
-            ChatInMessageItem(message)
+            ChatInMessageItem(message, showLess = handleShowLess(message))
+        }
+        _currentMessages.add(item)
+        return item
+    }
+
+    private fun handleShowLess(message: Message.ChatMessage): Boolean {
+        val lastOrNull = _currentMessages.lastOrNull() ?: return false
+        return if(lastOrNull::class.java == ChatInMessageItem::class.java){
+            (lastOrNull as ChatInMessageItem).message.user.uuid == message.user.uuid
+        }else{
+            false
         }
     }
 

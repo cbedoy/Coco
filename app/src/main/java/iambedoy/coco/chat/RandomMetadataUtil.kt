@@ -10,13 +10,11 @@ import iambedoy.coco.models.chat.User
  */
 object RandomMetadataUtil {
 
-
     val randomMessages = listOf(
-        "https://github.com/babylonhealth/orbit-mvi",
-        "https://www.amazon.com/",
-        "https://travis-ci.com/",
-        "https://open.spotify.com/track/3iEqGBZ2wcpVzhiAcwXVC6?si=dJFzFbNFQTm2iFfpcZlKyg",
-        "https://www.youtube.com/watch?v=0Lcwn1NkMXw"
+        "Hello?",
+        "How's going",
+        "Hello everyone",
+        "If you're to shy, please let me know"
     )
 
 

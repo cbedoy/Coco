@@ -17,7 +17,7 @@ class ChatRepository(
             is NetworkResponse.Success -> {
                 call.body.let {
                     MetadataMessage(
-                        thumbnail = it.images.firstOrNull()?.thumbnailUrl?:"",
+                        thumbnail = it.images.firstOrNull()?.url?:"",
                         title = it.title,
                         description = it.description,
                         type = it.type,

@@ -31,6 +31,10 @@ fun AppCompatActivity.showFragment(targetFragment: Fragment){
     }
 }
 
+fun View.goneIfTrueOtherwiseVisible(condition: Boolean){
+    visibility = if(condition) View.GONE else View.VISIBLE
+}
+
 fun View.visibleIfTrueOtherwiseGone(condition: Boolean?){
     visibility = if(condition == true) View.VISIBLE else View.GONE
 }

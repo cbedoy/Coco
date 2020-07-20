@@ -42,7 +42,7 @@ class ChatFragment : Fragment(){
 
         chat_recycler_view.setHasFixedSize(true)
         chat_recycler_view.layoutManager = LinearLayoutManager(context).apply {
-            reverseLayout = true
+            reverseLayout = false
         }
         chat_recycler_view.adapter = adapter
 
@@ -50,7 +50,7 @@ class ChatFragment : Fragment(){
 
             adapter.add(message)
 
-            chat_recycler_view.scrollToPosition(0)
+            chat_recycler_view.scrollToPosition(adapter.groupCount - 1)
         })
 
         chat_input_view.listener = object : ActionListener{
@@ -67,6 +67,8 @@ class ChatFragment : Fragment(){
         }
         viewModel.history.observe(viewLifecycleOwner, Observer { messages ->
             adapter.addAll(messages)
+
+            chat_recycler_view.scrollToPosition(adapter.groupCount - 1)
         })
 
         viewModel.presences.observe(viewLifecycleOwner, Observer { presence ->

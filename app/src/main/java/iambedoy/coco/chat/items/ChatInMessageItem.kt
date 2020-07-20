@@ -4,10 +4,8 @@ import coil.api.load
 import coil.transform.CircleCropTransformation
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
-import iambedoy.coco.R
+import iambedoy.coco.*
 import iambedoy.coco.models.chat.Message
-import iambedoy.coco.setCardBackgroundColor2
-import iambedoy.coco.setCollapseExpand
 import kotlinx.android.synthetic.main.view_holder_in_plain_message.*
 
 /**
@@ -16,8 +14,9 @@ import kotlinx.android.synthetic.main.view_holder_in_plain_message.*
  * Created by bedoy on 14/07/20.
  */
 class ChatInMessageItem(
-    private val message: Message.ChatMessage,
-    private val color: Int = R.color.Comment
+    val message: Message.ChatMessage,
+    private val color: Int = R.color.Comment,
+    private val showLess : Boolean = false
 ) : Item(){
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
 
@@ -34,6 +33,9 @@ class ChatInMessageItem(
         viewHolder.plain_message_avatar.setCollapseExpand(viewHolder.plain_message_nickname)
 
         viewHolder.itemView.setCollapseExpand(viewHolder.plain_message_text_time_ago)
+
+        viewHolder.plain_message_nickname.goneIfTrueOtherwiseVisible(showLess)
+        viewHolder.plain_message_avatar.goneIfTrueOtherwiseVisible(showLess)
     }
 
     override fun getLayout(): Int {
