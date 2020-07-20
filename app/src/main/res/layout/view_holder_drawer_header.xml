@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/Comment"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/drawer_header_avatar"
+        android:layout_margin="@dimen/common_size"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/>
+
+    <TextView
+        android:layout_marginLeft="@dimen/common_size"
+        android:layout_marginRight="@dimen/common_size"
+        tools:text="Carlos Bedoy"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="@dimen/big_text_size"
+        android:textColor="@color/textPrimaryColor"
+        android:id="@+id/drawer_header_nickname"
+        android:layout_gravity="center"
+        android:maxLines="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginLeft="@dimen/common_size"
+        android:layout_marginRight="@dimen/common_size"
+        android:layout_marginBottom="@dimen/common_size"
+        android:text="Android Developer, with[💖🌮🇲🇽]"
+        android:fontFamily="@font/roboto"
+        android:textSize="@dimen/common_text_size"
+        android:textColor="@color/textPrimaryColor"
+        android:id="@+id/drawer_header_description"
+        android:layout_gravity="center"
+        android:maxLines="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

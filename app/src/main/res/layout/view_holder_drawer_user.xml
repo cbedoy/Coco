@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/Background"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/drawer_user_avatar"
+        android:layout_width="32dp"
+        android:layout_marginLeft="@dimen/common_size"
+        android:layout_marginRight="@dimen/common_size"
+        android:layout_marginTop="@dimen/small_size"
+        android:layout_marginBottom="@dimen/small_size"
+        android:layout_height="32dp"/>
+
+    <TextView
+        tools:text="Carlos Bedoy"
+        android:layout_marginRight="@dimen/common_size"
+        android:layout_marginLeft="@dimen/common_size"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="@dimen/common_text_size"
+        android:textColor="@color/textPrimaryColor"
+        android:id="@+id/drawer_user_nickname"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

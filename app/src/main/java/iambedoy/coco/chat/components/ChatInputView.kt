@@ -24,7 +24,7 @@ class ChatInputView @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr){
 
     sealed class Action {
-        object SendAction : Action()
+        data class SendAction(val text: String) : Action()
         data class EmojiAction(val show: Boolean) : Action()
         object CameraAction : Action()
         object AttachAction : Action()
@@ -38,7 +38,10 @@ class ChatInputView @JvmOverloads constructor(
             chat_input_attach.visibleIfTrueOtherwiseGone(text?.length == 0)
         }
         chat_input_send.setOnClickListener {
-            listener?.invoke(SendAction)
+            if(chat_input_field.text.isNotEmpty()){
+                listener?.invoke(SendAction(chat_input_field.text.toString()))
+                chat_input_field.setText("")
+            }
         }
         chat_input_attach.setOnClickListener {
             listener?.invoke(AttachAction)

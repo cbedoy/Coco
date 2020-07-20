@@ -13,8 +13,8 @@
     <color name="colorBadge">@color/Pink</color>
     <color name="dividerColor">@color/Foreground</color>
 
-    <color name="in_message_color">@color/Comment</color>
-    <color name="out_message_color">@color/CurrentLine</color>
+    <color name="in_message_color">@color/CurrentLine</color>
+    <color name="out_message_color">@color/Comment</color>
 
     <color name="Background">#282a36</color>
     <color name="CurrentLine">#44475a</color>

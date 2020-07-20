@@ -57,7 +57,7 @@ class ChatFragment : Fragment(){
             override fun invoke(action: ChatInputView.Action) {
                 when(action){
                     is ChatInputView.Action.SendAction -> {
-                        viewModel.sendMessage(RandomMetadataUtil.randomMessages.shuffled().first())
+                        viewModel.sendMessage(action.text)
                     }
                     else -> {
 
@@ -66,7 +66,7 @@ class ChatFragment : Fragment(){
             }
         }
         viewModel.history.observe(viewLifecycleOwner, Observer { messages ->
-            adapter.addAll(messages)
+            adapter.update(messages)
 
             chat_recycler_view.scrollToPosition(adapter.groupCount - 1)
         })

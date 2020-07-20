@@ -7,6 +7,7 @@ import iambedoy.coco.chat.items.ChatInMessageItem
 import iambedoy.coco.chat.items.ChatOutMessageItem
 import iambedoy.coco.models.chat.Message
 import iambedoy.coco.models.chat.MetadataMessage
+import iambedoy.coco.providers.BackgroundProvider
 import iambedoy.coco.pubnub.PubNubRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,7 +20,8 @@ import java.util.*
  */
 class ChatViewModel (
     private val repository: ChatRepository,
-    private val pubNubRepository: PubNubRepository
+    private val pubNubRepository: PubNubRepository,
+    private val backgroundProvider: BackgroundProvider
 ) : ViewModel(){
 
     private var _userId = RandomMetadataUtil.randomUsers.shuffled()[0]
@@ -41,18 +43,34 @@ class ChatViewModel (
         val item = if (message.user.uuid == _userId.uuid) {
             ChatOutMessageItem(message)
         } else {
-            ChatInMessageItem(message, showLess = handleShowLess(message))
+            ChatInMessageItem(
+                message = message,
+                hideNickname = handleHideNickname(message))
         }
+        handleHideAvatar(message)
         _currentMessages.add(item)
         return item
     }
 
-    private fun handleShowLess(message: Message.ChatMessage): Boolean {
+    private fun handleHideNickname(message: Message.ChatMessage): Boolean {
         val lastOrNull = _currentMessages.lastOrNull() ?: return false
         return if(lastOrNull::class.java == ChatInMessageItem::class.java){
             (lastOrNull as ChatInMessageItem).message.user.uuid == message.user.uuid
         }else{
             false
+        }
+    }
+
+    private fun handleHideAvatar(message: Message.ChatMessage): Boolean {
+        val lastOrNull = _currentMessages.lastOrNull() ?: return false
+        return if(lastOrNull::class.java == ChatInMessageItem::class.java){
+            val result = (lastOrNull as ChatInMessageItem).message.user.uuid == message.user.uuid
+            if(result){
+                lastOrNull.hideAvatar = result
+            }
+            result
+        }else{
+            true
         }
     }
 

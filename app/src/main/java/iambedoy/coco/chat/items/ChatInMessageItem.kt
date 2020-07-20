@@ -15,8 +15,9 @@ import kotlinx.android.synthetic.main.view_holder_in_plain_message.*
  */
 class ChatInMessageItem(
     val message: Message.ChatMessage,
-    private val color: Int = R.color.Comment,
-    private val showLess : Boolean = false
+    private val color: Int = R.color.CurrentLine,
+    private val hideNickname : Boolean = false,
+    var hideAvatar: Boolean = false
 ) : Item(){
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
 
@@ -34,8 +35,8 @@ class ChatInMessageItem(
 
         viewHolder.itemView.setCollapseExpand(viewHolder.plain_message_text_time_ago)
 
-        viewHolder.plain_message_nickname.goneIfTrueOtherwiseVisible(showLess)
-        viewHolder.plain_message_avatar.goneIfTrueOtherwiseVisible(showLess)
+        viewHolder.plain_message_nickname.goneIfTrueOtherwiseVisible(hideNickname)
+        viewHolder.plain_message_avatar.invisibleIfTrueOtherwiseVisible(hideAvatar)
     }
 
     override fun getLayout(): Int {

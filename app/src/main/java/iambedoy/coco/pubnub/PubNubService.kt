@@ -94,7 +94,7 @@ class PubNubService {
         get() = _receivedPresences
 
     fun loadHistoryFromChannel(channel: String, completion: historyCompletion) {
-        pubNub.history().channel(channel).count(10).async { result, status ->
+        pubNub.history().channel(channel).count(100).async { result, status ->
             if(!status.isError){
                 GlobalScope.launch{
                     val messages = mutableListOf<ChatMessage>()

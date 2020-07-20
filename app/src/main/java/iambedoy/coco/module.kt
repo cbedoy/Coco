@@ -11,6 +11,7 @@ import iambedoy.coco.explorer.ExplorerFragment
 import iambedoy.coco.messages.MessagesFragment
 import iambedoy.coco.messages.MessagesRepository
 import iambedoy.coco.messages.MessagesViewModel
+import iambedoy.coco.providers.BackgroundProvider
 import iambedoy.coco.pubnub.PubNubRepository
 import iambedoy.coco.pubnub.PubNubService
 import iambedoy.coco.services.ExtractService
@@ -58,7 +59,7 @@ val viewModel = module {
         MessagesViewModel(get())
     }
     factory {
-        ChatViewModel(get(), get())
+        ChatViewModel(get(), get(), get())
     }
 }
 
@@ -101,5 +102,11 @@ val service = module {
     }
 }
 
+val common = module {
+    single {
+        BackgroundProvider()
+    }
+}
 
-val appModule = viewModel + fragment + repository + service
+
+val appModule = viewModel + fragment + repository + service + common
