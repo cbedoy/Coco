@@ -111,6 +111,31 @@ class PubNubService {
         }
     }
 
+    fun loadExplorerFromChannels(channels: List<String>, completion: historyCompletion){
+        pubNub.fetchMessages().channels(channels).maximumPerChannel(100).async { result, status ->
+            if(!status.isError){
+                GlobalScope.launch{
+                    val preparedMessages = mutableListOf<ChatMessage>()
+                    result?.channels?.forEach{ (_, messages) ->
+                        messages.forEach { rawMessage ->
+                            try {
+                                val chatMessage : ChatMessage = fromJson(rawMessage.message)
+                                if (chatMessage.hasMetadata()){
+                                    preparedMessages.add(chatMessage)
+                                }
+                            }catch (e: Exception){
+                                e.printStackTrace()
+                            }
+                        }
+                    }
+                    completion(preparedMessages)
+                }
+            }else{
+                completion(emptyList())
+            }
+        }
+    }
+
     fun publishMessageToChannel(message: ChatMessage, channel: String){
         pubNub.publish().channel(channel).message(message).shouldStore(true).async { result, status ->
 

@@ -1,10 +1,14 @@
 package iambedoy.coco.models.chat
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 /**
  * Coco
  *
  * Created by bedoy on 08/07/20.
  */
+@Parcelize
 data class MetadataMessage(
     val thumbnail: String = "",
     val title: String = "",
@@ -16,4 +20,4 @@ data class MetadataMessage(
     val favicon: String = "",
     val originalUrl: String = "",
     val url: String = ""
-)
+) : Parcelable

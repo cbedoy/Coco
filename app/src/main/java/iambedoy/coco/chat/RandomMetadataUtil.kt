@@ -1,5 +1,6 @@
 package iambedoy.coco.chat
 
+import iambedoy.coco.models.channel.Channel
 import iambedoy.coco.models.chat.User
 
 
@@ -20,8 +21,8 @@ object RandomMetadataUtil {
 
     val randomUsers = listOf(
         User("iambedoy", "Carlos Bedoy", "https://avatars0.githubusercontent.com/u/5570799?s=460&u=99501c68964dae1777f459bd9fed40137d8a6a64&v=4"),
-        User("vandonato", "Vanessa", "https://avatars0.githubusercontent.com/u/970828?s=460&u=a43b202b936f2fc154d3c29b42cbbbfa1f10009d&v=4"),
-        User("izz", "Izz Reyes", "https://avatars0.githubusercontent.com/u/6625540?s=460&v=4"),
+        User("vandonato", "Zara Cervantes", "https://avatars0.githubusercontent.com/u/970828?s=460&u=a43b202b936f2fc154d3c29b42cbbbfa1f10009d&v=4"),
+        User("izz", "Nestor Lopez", "https://avatars0.githubusercontent.com/u/6625540?s=460&v=4"),
         User("ana", "Ana Jackson", "https://avatars1.githubusercontent.com/u/1396?s=460&u=be29538f4f66d340a6d90663fcbf684c3c8e55f1&v=4"),
         User("cindy", "Cindy Le", "https://avatars3.githubusercontent.com/u/1874003?s=460&u=b2c68b6aef418154c10f9f7a32f783185aeceb62&v=4"),
         User("adam", "Adam Cur", "https://avatars2.githubusercontent.com/u/857609?s=460&u=f1483aef6415b8d61090dd366022203e6e2a2549&v=4"),
@@ -32,4 +33,9 @@ object RandomMetadataUtil {
         User("edna", "Edna Suns", "https://avatars1.githubusercontent.com/u/20565678?s=460&u=2701441587c94da8fe842042f9f92adff91245ef&v=4")
     )
 
+    val randomChannels = listOf(
+        Channel("belnor-1", "BelNor", "https://ap.rdcpix.com/58de8854e7726d1d7aaedbaa02c8b2dal-m1039337804od-w480_h360.jpg"),
+        Channel("developers-1", "Developers", "https://neilpatel.com/wp-content/uploads/2018/10/developers.jpg"),
+        Channel("musicians-1", "Musicians", "https://www.digitalmusicnews.com/wp-content/uploads/2017/10/jammcard2-1024x683.jpg")
+    )
 }

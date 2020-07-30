@@ -1,5 +1,6 @@
 package iambedoy.coco.pubnub
 
+import iambedoy.coco.chat.RandomMetadataUtil
 import iambedoy.coco.models.chat.Message
 
 /**
@@ -12,6 +13,10 @@ class PubNubRepository (
 ){
     fun loadHistoryFromChannel(channelId: String, completion: historyCompletion) {
         service.loadHistoryFromChannel(channelId, completion)
+    }
+
+    fun loadExplorer(channels: List<String>, completion: historyCompletion){
+        service.loadExplorerFromChannels(channels, completion)
     }
 
     fun subscribeToChannel(channelId: String) = service.subscribeToChannel(channelId)

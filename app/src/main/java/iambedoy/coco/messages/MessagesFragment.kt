@@ -38,23 +38,16 @@ class MessagesFragment : Fragment(){
 
         common_recycler_view.layoutManager = LinearLayoutManager(context)
         common_recycler_view.adapter = adapter
+        common_recycler_view.visibility = View.VISIBLE
 
-        viewModel.userListState.observe(viewLifecycleOwner, Observer { source ->
-            if(source.isNotEmpty()){
-                common_recycler_view.visibility = View.VISIBLE
-
-                adapter.add(CommonTitleItem("Messages"))
-
-                source.forEachIndexed{index, user ->
-                    adapter.add(MessageItem(user = user, messageText = randomMessages[index]))
-                }
-            }
+        viewModel.channels.observe(viewLifecycleOwner, Observer { channels ->
+            adapter.update(channels)
         })
     }
 
     override fun onResume() {
         super.onResume()
 
-        viewModel.loadUserList()
+        viewModel.loadChannels()
     }
 }

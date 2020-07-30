@@ -57,6 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/common_text_size"
+                    android:autoLink="web"
                     android:fontFamily="@font/roboto"
                     android:lineSpacingMultiplier="@dimen/lineSpace"
                     tools:text="I'm looking through you while you're looking through your phone, and then leaving with somebody else"

@@ -8,6 +8,7 @@ import iambedoy.coco.chat.ChatFragment
 import iambedoy.coco.chat.ChatRepository
 import iambedoy.coco.chat.ChatViewModel
 import iambedoy.coco.explorer.ExplorerFragment
+import iambedoy.coco.explorer.ExplorerViewModel
 import iambedoy.coco.messages.MessagesFragment
 import iambedoy.coco.messages.MessagesRepository
 import iambedoy.coco.messages.MessagesViewModel
@@ -60,6 +61,9 @@ val viewModel = module {
     }
     factory {
         ChatViewModel(get(), get(), get())
+    }
+    factory {
+        ExplorerViewModel(get())
     }
 }
 

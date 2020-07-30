@@ -3,8 +3,10 @@ package iambedoy.coco
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import iambedoy.coco.chat.ChatViewModel
 import iambedoy.coco.explorer.ExplorerFragment
 import iambedoy.coco.messages.MessagesFragment
+import iambedoy.coco.models.channel.Channel
 import iambedoy.coco.settings.SettingsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
@@ -34,6 +36,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        showFragment(messagesFragment)
+        showFragment(explorerFragment)
     }
 }

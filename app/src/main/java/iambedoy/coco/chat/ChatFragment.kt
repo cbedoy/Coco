@@ -15,6 +15,7 @@ import iambedoy.coco.chat.components.ActionListener
 import iambedoy.coco.chat.components.ChatInputView
 import iambedoy.coco.chat.items.ChatInMessageItem
 import iambedoy.coco.chat.items.ChatOutMessageItem
+import iambedoy.coco.models.channel.Channel
 import kotlinx.android.synthetic.main.fragment_chat.*
 import org.koin.android.ext.android.inject
 
@@ -40,9 +41,18 @@ class ChatFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val channel  = activity?.intent?.extras?.get("channel") as Channel?
+
+        if (channel?.uuid == null){
+            activity?.finish()
+        }else{
+            viewModel.subscribeToChannel(channel.uuid)
+        }
+
         chat_recycler_view.setHasFixedSize(true)
         chat_recycler_view.layoutManager = LinearLayoutManager(context).apply {
             reverseLayout = false
+            findLastCompletelyVisibleItemPosition()
         }
         chat_recycler_view.adapter = adapter
 
@@ -74,11 +84,5 @@ class ChatFragment : Fragment(){
         viewModel.presences.observe(viewLifecycleOwner, Observer { presence ->
             presence.toString()
         })
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        viewModel.subscribeToChannel("belnor")
     }
 }

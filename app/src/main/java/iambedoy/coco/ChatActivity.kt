@@ -6,11 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import iambedoy.coco.chat.ChatFragment
+import iambedoy.coco.chat.ChatViewModel
 import iambedoy.coco.chat.RandomMetadataUtil
 import iambedoy.coco.chat.items.drawer.DrawerActionItem
 import iambedoy.coco.chat.items.drawer.DrawerDividerItem
 import iambedoy.coco.chat.items.drawer.DrawerHeaderItem
 import iambedoy.coco.chat.items.drawer.DrawerMemberItem
+import iambedoy.coco.models.channel.Channel
 import kotlinx.android.synthetic.main.activity_chat.*
 import org.koin.android.ext.android.inject
 
@@ -22,6 +24,7 @@ import org.koin.android.ext.android.inject
  */
 class ChatActivity : AppCompatActivity(){
     private val chatFragment : ChatFragment by inject()
+    private val viewModel : ChatViewModel by inject()
 
     private val adapter = GroupAdapter<GroupieViewHolder>()
 

@@ -25,6 +25,11 @@ class ChatViewModel (
 ) : ViewModel(){
 
     private var _userId = RandomMetadataUtil.randomUsers.shuffled()[0]
+        set(value) {
+            field = value
+
+            pubNubRepository.registerUser(value.uuid)
+        }
 
     private var _currentMessages = mutableListOf<Item>()
 
@@ -88,7 +93,6 @@ class ChatViewModel (
 
     fun subscribeToChannel(channelId: String){
         _channelId = channelId
-        pubNubRepository.registerUser(_userId.uuid)
         pubNubRepository.subscribeToChannel(channelId)
     }
 
